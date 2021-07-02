@@ -1,3 +1,9 @@
+FILE=k8s-install-ubuntu.log
+if test -f "$FILE"; then
+    echo "$FILE exists."
+    exit
+fi
+
 swapoff -a
 
 sudo modprobe overlay
