@@ -1,3 +1,4 @@
+#!/bin/bash
 FILE=k8s-install-ubuntu.log
 
 if test -f "$FILE"; then
