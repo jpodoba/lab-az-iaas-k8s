@@ -8,6 +8,16 @@ fi
 
 if [ "$HOSTNAME" = "storage-vm" ]; then
     printf '%s\n' "Storage host"
+    
+sudo apt-get install -y nfs-kernel-server
+sudo mkdir -p /export/volumes
+sudo mkdir -p /export/volumes/pod
+
+sudo bash -c 'echo "/export/volumes  *(rw,no_root_squash,no_subtree_check)" > /etc/exports'
+cat /etc/exports
+sudo systemctl restart nfs-kernel-server.service
+sudo systemctl enable nfs-kernel-server.service    
+    
 else
     printf '%s\n' "K8s host"
 
