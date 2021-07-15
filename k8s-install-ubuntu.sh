@@ -63,4 +63,10 @@ sudo apt-mark hold kubelet kubeadm kubectl containerd | tee -a $FILE
 sudo systemctl enable kubelet.service | tee -a $FILE
 sudo systemctl enable containerd.service | tee -a $FILE
 
+sudo apt-get install -y bash-completion | tee -a $FILE
+echo "source <(kubectl completion bash)" >> ~/.bashrc | tee -a $FILE
+source ~/.bashrc | tee -a $FILE
+
+#On each Node in your cluster...install the NFS client.
+sudo apt-get install -y nfs-common | tee -a $FILE
 fi
