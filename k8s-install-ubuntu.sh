@@ -1,8 +1,14 @@
 FILE=k8s-install-ubuntu.log
+
 if test -f "$FILE"; then
     echo "$FILE exists."
     exit
 fi
+
+if [ "$HOSTNAME" = "storage-vm" ]; then
+    printf '%s\n' "Storage host"
+else
+    printf '%s\n' "K8s host"
 
 swapoff -a
 
@@ -46,3 +52,5 @@ sudo apt-mark hold kubelet kubeadm kubectl containerd
 
 sudo systemctl enable kubelet.service
 sudo systemctl enable containerd.service
+
+fi
